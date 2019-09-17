@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address book demo</title>
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .buttonedit {
+            background-color: #008CBA;
+        }
+        
+        .buttondelete {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Address book</h3>
+    <p>
+        Search <input type="text" id="srch" onkeyup="search(this.value)">
+    </p>
+    <p>
+        Name <input type="text" id="name"> Tel <input type="text" id="tel">
+        <button class="button" onclick="save()">Save</button>
+        <button class="button buttondelete" onclick="delall()">Clear All</button>
+    </p>
+    <div id="disp"></div>
+
+    <script>
+        aAddressBook = [];
+        editId = null;
+        show();
+
+        function search(txt) {
+            // TODO: using Vanilla JS (aka plain old JavaScript)
+
+            // use filter() method
+            // filter() creates a new array with elements that fall under a given criteria from an existing array
+            objs = aAddressBook.filter(function(addr) {
+                //console.log(txt);
+                // includes() method return true on match found and false if no match found
+                return addr.name.includes(txt) || addr.tel.includes(txt);
+            });
+            //console.log("==>" + objs.length);
+
+            elmDisp = document.getElementById('disp');
+            elmDisp.innerHTML = "";
+            if (objs.length > 0) {
+                // TODO: duplicate code in function show()
+                for (i = 0; i < objs.length; i++) {
+                    elmDisp.innerHTML += "<button class=\"button buttondelete\" onclick='del(" + i + ");'>X</button>";
+                    elmDisp.innerHTML += "<button class=\"button buttonedit\"onclick='edit(" + i + ");'>E</button>";
+                    elmDisp.innerHTML += "&nbsp;" + objs[i].name + " " + objs[i].tel;
+                    elmDisp.innerHTML += "<br/>";
+                }
+            } else {
+                elmDisp.innerHTML = "<span style='color:red'>Not found.</span>";
+            }
+        }
+
+        function save() {
+            n = document.getElementById('name').value;
+            t = document.getElementById('tel').value;
+            if (editId == null) { // add new
+                obj = {
+                    name: n,
+                    tel: t
+                };
+                aAddressBook.push(obj);
+            } else { // edit
+                aAddressBook[editId].name = n;
+                aAddressBook[editId].tel = t;
+            }
+
+            saveToLocalStorage();
+            show();
+        }
+
+        function del(i) {
+            // remove array at index i
+            aAddressBook.splice(i, 1);
+            saveToLocalStorage();
+            show();
+        }
+
+        function delall() {
+            // set aAddressBook to empty array
+            aAddressBook = [];
+            saveToLocalStorage();
+            show();
+        }
+
+        function edit(i) {
+            // set editId = index of array element selected for save
+            editId = i;
+            n = aAddressBook[i].name;
+            t = aAddressBook[i].tel;
+            document.getElementById('name').value = n;
+            document.getElementById('tel').value = t;
+        }
+
+        function saveToLocalStorage() {
+            // convert addressBook array to json text format
+            txt = JSON.stringify(aAddressBook);
+            localStorage.setItem("addr", txt);
+        }
+
+        function show() {
+            aAddressBook = JSON.parse(localStorage.getItem("addr"));
+            // check for first time if there is not item name addr in localstorge then create empty array
+            if (!Array.isArray(aAddressBook)) {
+                aAddressBook = [];
+            }
+            elmDisp = document.getElementById('disp');
+            elmDisp.innerHTML = "";
+            for (i = 0; i < aAddressBook.length; i++) {
+                elmDisp.innerHTML += "<button class=\"button buttondelete\" onclick='del(" + i + ");'>X</button>";
+                elmDisp.innerHTML += "<button class=\"button buttonedit\"onclick='edit(" + i + ");'>E</button>";
+                elmDisp.innerHTML += "&nbsp;" + aAddressBook[i].name + " " + aAddressBook[i].tel;
+                elmDisp.innerHTML += "<br/>";
+            }
+
+            // clear textbox and setfocus to name's textbox
+            document.getElementById('tel').value = "";
+            document.getElementById('name').value = "";
+            document.getElementById('name').focus();
+
+            editId = null;
+        }
+    </script>
+</body>
+
+</html>
