@@ -1,0 +1,30 @@
+#Texttt {
+    padding: 15px;
+    float: left;
+    
+}
+#demo{
+    background-color: rgb(250, 255, 178);
+    background-attachment: fixed;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+    
+}
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+
+
+
+@media screen and (max-width: 800px) {
+    .col-25,.col-75 {
+        width: 100%;
+        margin-top: 0;
+    }
+}

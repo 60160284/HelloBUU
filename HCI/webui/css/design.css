@@ -1,0 +1,16 @@
+/* #draggable { width: 150px; height: 150px; padding: 0.5em; } 
+.ui-widget-content { 
+border: 1px solid #000000; 
+background-color: #e71c1c; 
+} */
+
+#box{
+    display: none;
+    
+}
+ui-datepicker{  
+    width: 150px;  
+    font-family: tahoma;  
+    font-size: 11px;  
+    text-align: center;  
+}  

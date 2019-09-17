@@ -1,0 +1,102 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script>
+        Emlist = JSON.parse(localStorage.getItem("Em"));
+
+        if (!Array.isArray(Emlist)) {
+            Emlist = new Array();
+        }
+
+        function save() {
+            en = document.getElementById('EmNum').value;
+            n = document.getElementById('name').value;
+            sn = document.getElementById('sname').value;
+            m = document.getElementById('money').value;
+            s = document.getElementById('mySelect').value;
+
+            var obj = {
+                EmNum: en,
+                name: n,
+                sname: sn,
+                money: m,
+                mySelect: s
+
+            };
+            Emlist.push(obj);
+            txt = JSON.stringify(Emlist);
+            //alert(Emlist.length);
+            localStorage.setItem("Em", txt);
+        }
+        // function Get() {
+
+        //     txt = JSON.parse(localStorage.getItem("Em"));
+
+        //     document.getElementById('demo').innerHTML = "";
+        //     for (i = 0; i < txt.length; i++) {
+        //         document.getElementById('demo').innerHTML += " รหัสพนักงาน : " + txt[i].EmNum + "<br/>"
+        //             + " ชื่อ : " + txt[i].name + "<br/>"
+        //             + " นามสกุล : " + txt[i].sname + "<br/>"
+        //             + " เงินเดือน : " + txt[i].money + "<br/>"
+        //             + " การศึกษา : " + txt[i].mySelect + "<br/>";
+        //     }
+        // }
+ 
+
+        function CFour(){
+            localStorage.clear();
+            Emlist = [];
+            location.reload(true);
+        }
+    </script>
+
+    
+
+    <!-- <button onclick="Get()">Show</button>
+<div id="demo">
+        
+        <script>
+            document.getElementById('EmNum').focus();
+            document.getElementById('name').focus();
+            document.getElementById('sname').focus();
+            document.getElementById('money').focus();
+            document.getElementById('mySelect').focus();
+        </script>
+</div>  -->
+<div id="Texttt">
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="add.html">Add</a></li>
+            <li><a href="#" onclick="CFour()">Clear All</a></li>
+            
+          
+        </ul>
+    </div>
+
+    </br></br> </br></br>
+   
+    <div id="demo">
+
+        <script>
+            txt = JSON.parse(localStorage.getItem("Em"));
+
+            document.getElementById('demo').innerHTML = "";
+            for (i = 0; i < txt.length; i++) {
+                document.getElementById('demo').innerHTML += " รหัสพนักงาน : " + txt[i].EmNum + "<br/>" +
+                    " ชื่อ : " + txt[i].name + "<br/>" +
+                    " นามสกุล : " + txt[i].sname + "<br/>" +
+                    " เงินเดือน : " + txt[i].money + "<br/>" +
+                    " การศึกษา : " + txt[i].mySelect + "<br/>"+"</br>";
+            }
+        </script>
+    </div>
+</div>
+</head>
+
+</html>

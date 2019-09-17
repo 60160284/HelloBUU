@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script>
+        Emlist = JSON.parse(localStorage.getItem("Em"));
+
+        if (!Array.isArray(Emlist)) {
+            Emlist = new Array();
+        }
+
+        function save() {
+            en = document.getElementById('EmNum').value;
+            n = document.getElementById('name').value;
+            sn = document.getElementById('sname').value;
+            m = document.getElementById('money').value;
+            s = document.getElementById('mySelect').value;
+
+            var obj = {
+                EmNum: en,
+                name: n,
+                sname: sn,
+                money: m,
+                mySelect: s
+
+            };
+            Emlist.push(obj);
+            txt = JSON.stringify(Emlist);
+            //alert(Emlist.length);
+            localStorage.setItem("Em", txt);
+
+
+        }
+
+        function Get() {
+
+            txt = JSON.parse(localStorage.getItem("Em"));
+
+            document.getElementById('demo').innerHTML = "";
+            for (i = 0; i < txt.length; i++) {
+                document.getElementById('demo').innerHTML += " รหัสพนักงาน : " + txt[i].EmNum + "<br/>" +
+                    " ชื่อ : " + txt[i].name + "<br/>" +
+                    " นามสกุล : " + txt[i].sname + "<br/>" +
+                    " เงินเดือน : " + txt[i].money + "<br/>" +
+                    " การศึกษา : " + txt[i].mySelect + "<br/>";
+            }
+        }
+
+        function ClearAll() {
+            localStorage.clear();
+            Emlist = [];
+        }
+
+
+        function CFour() {
+            localStorage.clear();
+            Emlist = [];
+            location.reload(true);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="Texttt">
+        <div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="main.html">Home</a></li>
+                <li><a href="add.html">Add</a></li>
+                <li><a href="#" onclick="CFour()">Clear All</a></li>
+
+
+            </ul>
+        </div>
+
+        </br></br> </br></br>
+        <div class="col-25">
+            <label>รหัสพนักงาน : </label>
+        </div>
+
+        <div class="col-75">
+            <input type="text" name="EmNum" id="EmNum" />
+        </div>
+
+        <div class="col-25">
+            <label>ชื่อ : </label>
+        </div>
+
+        <div class="col-75">
+            <input type="text" name="name" id="name" />
+        </div>
+
+        <div class="col-25">
+            <label>สกุล : </label>
+        </div>
+
+        <div class="col-75">
+            <input type="text" name="sname" id="sname" />
+        </div>
+
+        <!-- <input type="text" id="cal" pattern="[0-9]{10}" /> -->
+        <div class="col-25">
+            <label>เงินเดือน : </label>
+        </div>
+
+        <div class="col-75">
+            <input type="number" name="money" id="money" />
+        </div>
+
+        <div class="col-25">
+            <label>การศึกษา : </label>
+        </div>
+
+        <div class="col-75">
+            <select id="mySelect">
+                <option value="default">กรุณาเลือกระดับการศึกษา :</option>
+                <option value="ปริญญาตรี">ปริญญาตรี</option>
+                <option value="ปริญญาโท">ปริญญาโท</option>
+                <option value="ปริญญาเอก">ปริญญาเอก</option>
+
+            </select>
+        </div>
+        </br></br></br> </br></br></br> </br></br></br>
+        <div>
+            <a style="background-color: #0abb45;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block; " href="main.html" onclick="save()">Submit</a>
+            <!-- <a href="main.html"><button>Show information</button></a> -->
+
+        </div>
+    </div>
+    
+    <!-- <div id="demo">
+        <p></p>
+        <script>
+            document.getElementById('EmNum').focus();
+            document.getElementById('name').focus();
+            document.getElementById('sname').focus();
+            document.getElementById('money').focus();
+            document.getElementById('mySelect').focus();
+        </script> -->
+
+</body>
+
+</html>

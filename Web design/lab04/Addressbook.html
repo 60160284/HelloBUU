@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <script>
+        aAddressBook = JSON.parse(localStorage.getItem("addr"));
+
+        if (!Array.isArray(aAddressBook)) {
+            aAddressBook = new Array();
+        }
+        function save() {
+
+            n = document.getElementById('name').value;
+            c = document.getElementById('cal').value;
+            var obj = {
+                name: n,
+                cal: c
+            };
+            aAddressBook.push(obj);
+            txt = JSON.stringify(aAddressBook);
+            //alert(aAddressBook.length);
+            localStorage.setItem("addr", txt);
+        }
+        function Get() {
+
+            txt = JSON.parse(localStorage.getItem("addr"));
+
+            document.getElementById('demo').innerHTML = "";
+            for (i = 0; i < txt.length; i++) {
+                document.getElementById('demo').innerHTML += txt[i].name + " " + txt[i].cal + "<br/>";
+            }
+        }
+        function ClearAll() {
+            localStorage.clear();
+            Emlist = [];
+            location.reload(true);
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    ชื่อ-สกุล <input type="text" name="name" id="name" /> เบอร์โทร
+    <input type="text" id="cal" pattern="[0-9]{10}" />
+    <button onclick="save()">Save</button>
+    <button onclick="ClearAll()">ClearAll</button>
+    <button onclick="Get()">Show information</button>
+    <div id="disp"></div>
+
+<div id="demo">
+    <p></p>
+    <script>
+        document.getElementById('name').focus();
+        document.getElementById('cal').focus();
+    </script>
+
+</div>
+
+</body>
+
+</html>
