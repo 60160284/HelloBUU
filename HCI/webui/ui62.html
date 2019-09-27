@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Tabs - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script type='text/javascript' src='js/jquery.js'></script>
+    <script type='text/javascript' src='js/jquery-ui.js'></script>
+    <script type='text/javascript' src='js/custom.js'></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/custom62.js"></script>
+    <script>
+        $(function () {
+            $("#tabs").tabs({
+                collapsible: true
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">Size</a></li>
+            <li><a href="#tabs-2">Shake</a></li>
+            <li><a href="#tabs-3">Bounce</a></li>
+            <li><a href="#tabs-4">Custom</a></li>
+            <li><a href="#tabs-5">Hide</a></li>
+            <li><a href="#tabs-6">Fade</a></li>
+
+        </ul>
+        <div id="tabs-1">
+            <div id="logoDiv">
+                <img src="images/asean_logo.jpg" id="logo1" height="200">
+            </div>
+            <button type="button" id="sizeLogo">Size The Image</button>
+        </div>
+        <div id="tabs-2">
+            <div id="logoDiv">
+                <img src="images/asean_logo2.jpg" id="logo2" height="200">
+            </div>
+            <button type="button" id="shakeLogo">Shake the Image</button>
+        </div>
+        <div id="tabs-3">
+            <div id="logoDiv">
+                <img src="images/asean_logo3.jpg" id="logo3" height="200">
+            </div>
+            <button type="button" id="bounceLogo">Bounce The Image</button>
+        </div>
+
+        <div id="tabs-4">
+            <div id="logoDiv">
+                <img src="images/asean_logo4.jpg" id="logo4" height="200">
+            </div>
+            <button type="button" id="customAnim">Custom Animation</button>
+        </div>
+
+        <div id="tabs-5">
+            <div id="logoDiv">
+                <img src="images/asean_logo5.jpg" id="logo5" height="200">
+            </div>
+            <button type="button" id="hideLogo">Hide The Image</button>
+        </div>
+
+        <div id="tabs-6">
+            <div id="logoDiv">
+                <img src="images/asean_logo6.jpg" id="logo6" height="200">
+                <button type="button" id="fadeLogo">Fade The Image</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

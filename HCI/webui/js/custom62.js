@@ -5,7 +5,7 @@ $(document).ready(function () {
 });
 
 function hideTheImage() {
-    $("#logo").hide('slide', {}, 2500);
+    $("#logo5").hide('slide', {}, 2500);
 }
 
 //2
@@ -35,7 +35,7 @@ $(document).ready(function () {
 });
 
 function fadeTheImage() {
-    $("#logo").fadeOut(2500);
+    $("#logo6").fadeOut(2500);
 }
 
 //5
@@ -85,7 +85,7 @@ $(document).ready(function () {
 });
 
 function customAnimt() {
-    $("#logo").animate( {opacity: 0.25,
+    $("#logo4").animate( {opacity: 0.25,
         right: "+=50",
         height: "toggle"
       }, 5000);
@@ -98,7 +98,7 @@ $(document).ready(function () {
 });
 
 function shakeLogo() {
-    $("#logo").effect("shake");
+    $("#logo2").effect("shake");
 }
 // 11
 $(document).ready(function () {
@@ -107,7 +107,7 @@ $(document).ready(function () {
 });
 
 function bounceTheImage() {
-    $("#logo").effect("bounce", { times: 3 }, "slow");
+    $("#logo3").effect("bounce", { times: 3 }, "slow");
 }
 // 12
 $(document).ready(function () {
@@ -134,5 +134,5 @@ $(document).ready(function () {
 });
 
 function sizeTheImage() {
-    $("#logo").effect( "size" );
+    $("#logo1").effect( "size" );
 }
